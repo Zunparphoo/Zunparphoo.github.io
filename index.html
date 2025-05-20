@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>နန်းစွန်ပါဖူး - အနုပညာရှင်စိတ်ဓာတ်</title>
+    <style>
+        :root {
+            --primary-color: #6a0dad;
+            --secondary-color: #9c27b0;
+            --light-purple: #b39ddb;
+            --text-color: #333;
+            --light-text: #f8f8f8;
+            --background: #f5f5f5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Pyidaungsu', 'Segoe UI', sans-serif;
+        }
+        
+        body {
+            background-color: var(--background);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--light-text);
+            text-align: center;
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            opacity: 0.2;
+            z-index: 0;
+        }
+        
+        header > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--light-text);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: var(--light-text);
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-3px);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        section {
+            margin-bottom: 3rem;
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        section:hover {
+            transform: translateY(-5px);
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--secondary-color);
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            height: 300px;
+            border-radius: 10px;
+            object-fit: cover;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .skill {
+            background: var(--light-purple);
+            color: var(--light-text);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .project-info {
+            padding: 1.5rem;
+        }
+        
+        .project-info h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .achievements {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .achievement-card {
+            background: linear-gradient(135deg, var(--light-purple), white);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .achievement-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .gallery-item {
+            height: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        footer {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--light-text);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        
+        .quote {
+            font-style: italic;
+            margin: 1rem 0;
+            font-size: 1.1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Padauk&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <img src="photo_2025-05-02_12-34-     zpp.jpg" alt="နန်းစွန်ပါဖူး" class="profile-img">
+        <h1>နန်းစွန်ပါဖူး</h1>
+        <p class="tagline">အနုပညာရှင်စိတ်ဓာတ် | အဆိုတော် | အကသမား | အနာဂတ်ဖျော်ဖြေရေးသမား</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+        </div>
+    </header>
+    
+    <div class="container">
+        <section id="about">
+            <h2>ကျွန်မအကြောင်း</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>မင်္ဂလာပါ! ကျွန်မနာမည်က နန်းစွန်ပါဖူးပါ။ ကရင်ပြည်နယ်၊ ကော့ကရိတ်မြို့နယ်၊ ထီဖိုးစံကျေးရွာမှ ဆယ်တန်းကျောင်းသူတစ်ဦးဖြစ်ပါတယ်။ တောင်ကလေးဘုန်းတော်ကြီးသင်ပညာရေးကျောင်းမှာ ပညာသင်ကြားနေပါတယ်။</p>
+                    <p>ကျွန်မက ပျော်ပျော်ရွှင်ရွှင်နေရတာကို ကြိုက်နှစ်သက်ပြီး စကားများများပြောရတာကို နှစ်သက်တဲ့သူတစ်ယောက်ပါ။ အင်္ဂလိပ်စာကို အထူးစိတ်ဝင်စားပါတယ်။ ငယ်ငယ်ကတည်းက သရုပ်ဆောင်ကောင်းတစ်ယောက်ဖြစ်ချင်ခဲ့ပါတယ်။</p>
+                    <p>ကျွန်မက မိဘတွေ အားကိုးရတဲ့သမီး၊ လိမ္မာယဉ်ကျေးတဲ့သမီးလေးဖြစ်ချင်ပါတယ်။ ဇာတ်ကားကြည့်ရတာကို အရမ်းနှစ်သက်ပြီး အနာဂတ်မှာ အနုပညာလမ်းကြောင်းကို လျှောက်လှမ်းမယ်လို့ ရည်မှန်းထားပါတယ်။</p>
+                </div>
+                <img src="zpp.jpg" alt="ကျွန်မအကြောင်း" class="about-image">
+            </div>
+        </section>
+        
+        <section id="hobbies">
+            <h2>ကျွန်မ၏ ဝါသနာများ</h2>
+            <div class="skills-container">
+                <span class="skill">သီချင်းဆိုခြင်း</span>
+                <span class="skill">ကခြင်း</span>
+                <span class="skill">သီချင်းနားထောင်ခြင်း</span>
+                <span class="skill">ရုပ်ရှင်ကြည့်ခြင်း</span>
+                <span class="skill">အင်္ဂလိပ်စာ</span>
+                <span class="skill">စကားပြောခြင်း</span>
+                <span class="skill">သရုပ်ဆောင်ခြင်း</span>
+                <span class="skill">အနုပညာ</span>
+            </div>
+            <p class="quote">"အနုပညာက ကျွန်မတို့ကို ကိုယ့်ကိုယ်ကိုယ် ရှာဖွေတွေ့ရှိစေပြီး တစ်ချိန်တည်းမှာပဲ ကိုယ့်ကိုယ်ကိုယ် မေ့လျော့စေနိုင်ပါတယ်" - သောမတ်စ် မာတင်</p>
+        </section>
+        
+        <section id="education">
+            <h2>ပညာရေး</h2>
+            <div class="about-content">
+                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="ပညာရေး" class="about-image">
+                <div class="about-text">
+                    <h3>တောင်ကလေးဘုန်းတော်ကြီးသင်ပညာရေးကျောင်း</h3>
+                    <p>လက်ရှိ ဆယ်တန်းကျောင်းသူ</p>
+                    <p>အင်္ဂလိပ်စာဘာသာရပ်ကို အထူးစိတ်ဝင်စား</p>
+                    <p>ကျောင်းယဉ်ကျေးမှုလှုပ်ရှားမှုများတွင် တက်ကြွစွာပါဝင်</p>
+                    <p>ကရင်ပြည်နယ်၊ ကော့ကရိတ်မြို့နယ်၊ ထီဖိုးစံကျေးရွာမှ</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="achievements">
+            <h2>ကျွန်မ၏ အောင်မြင်မှုများ</h2>
+            <div class="achievements">
+                <div class="achievement-card">
+                    <h3>ပါဠိကေတုဆု</h3>
+                    <p>ပါဠိစာပေတွင် ထူးချွန်မှုအတွက် ရရှိခဲ့ခြင်း (သုကုမာရမဂ္ဂဒီပနီ)</p>
+                </div>
+                <div class="achievement-card">
+                    <h3>ကရင်စာပေဆု</h3>
+                    <p>ကရင်ဘာသာစကားနှင့် စာပေတွင် ထူးချွန်မှုအတွက် ရရှိခဲ့ခြင်း</p>
+                </div>
+                <div class="achievement-card">
+                    <h3>/h3>
+                    <p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="projects">
+            <h2>ကျွန်မ၏ ပရောဂျက်များ</h2>
+            <div class="projects">
+                <div class="project-card">
+                    <img src="dish D.jpg" alt="ဆပ်ပြာလုပ်ငန်း" class="project-image">
+                    <div class="project-info">
+                        <h3>ဆပ်ပြာရည်ထုတ်လုပ်ခြင်း</h3>
+                        <p>သဘာဝပစ္စည်းများဖြင့် ဆပ်ပြာရည်ပြုလုပ်သည့် လက်တွေ့သိပ္ပံပရောဂျက်</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="dish.jpg" alt="ဖျော်ဖြေရေး" class="project-image">
+                    <div class="project-info">
+                       
+                    </div>
+                
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="gallery">
+            <h2>ကျွန်မ၏ ဓာတ်ပုံများ</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="photo_2025-05-02_12-34-     zpp.jpg" alt="ဖျော်ဖြေရေး">
+                </div>
+                <div class="gallery-item">
+                    <img src="phoo.jpg" alt="သီချင်းဆိုခြင်း">
+                </div>
+                <div class="gallery-item">
+                    <img src="zpp.jpg" alt="ဂီတ">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="ကခြင်း">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="သရုပ်ဆောင်ခြင်း">
+                </div>
+            </div>
+        </section>
+        
+        <section id="aspirations">
+            <h2>ကျွန်မ၏ အိပ်မက်များနှင့် ရည်မှန်းချက်များ</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>ကျွန်မငယ်စဉ်ကတည်းက သရုပ်ဆောင်ကောင်းတစ်ယောက်ဖြစ်ချင်ခဲ့ပါတယ်။ ရုပ်ရှင်လောကနှင့် ဖျော်ဖြေမှုများသည် လူတို့၏စိတ်နှလုံးကို ထိခိုက်နိုင်စွမ်းကို အထူးစိတ်ဝင်စားမိပါတယ်။</p>
+                    <p>အနာဂတ်တွင် အနုပညာလမ်းကြောင်းကို သီချင်းဆိုခြင်း၊ အကခြင်း သို့မဟုတ် သရုပ်ဆောင်ခြင်းများဖြင့် လျှောက်လှမ်းရန် စိတ်ပြင်းပြစွာ ဆုံးဖြတ်ထားပါတယ်။ အနုပညာက လူတွေရဲ့ဘဝကို ပျော်ရွှင်မှုနှင့် စေ့ဆော်မှုများ ယူဆောင်လာနိုင်တယ်လို့ ယုံကြည်ပါတယ်။</p>
+                    <p>ကျွန်မက မိဘတွေ ဂုဏ်ယူစေမယ့်သူတစ်ယောက်ဖြစ်ပြီး အနုပညာကို ချစ်မြတ်နိုးတဲ့သူတစ်ယောက်ဖြစ်ချင်ပါတယ်။ ကရင်ရိုးရာယဉ်ကျေးမှုနှင့် ခေတ်ပေါ်အနုပညာဖော်ပြမှုများကို ပေါင်းစပ်လိုပါတယ်။</p>
+                </div>
+                <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="အိပ်မက်များ" class="about-image">
+            </div>
+            <p class="quote">"အနာဂတ်သည် မိမိ၏အိပ်မက်များ၏ အလှတရားကို ယုံကြည်သူများအတွက် ဖြစ်သည်" - အီလီနာ ရုစဗဲ့</p>
+        </section>
+    </div>
+    
+    <footer>
+        <h3>ဆက်သွယ်ရန်</h3>
+        <p>ကရင်ပြည်နယ်၊ ကော့ကရိတ်မြို့နယ်၊ ထီဖိုးစံကျေးရွာ</p>
+        <p>တောင်ကလေးဘုန်းတော်ကြီးသင်ပညာရေးကျောင်း - ဆယ်တန်းကျောင်းသူ</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+        </div>
+        <p>&copy; ၂၀၂၃ နန်းစွန်ပါဖူး - မူပိုင်ခွင့်အားလုံးရှိသည်</p>
+    </footer>
+    
+    <script>
+        // စာမျက်နှာပေါ်ရောက်လာသောအခါ animation များ
+        const sections = document.querySelectorAll('section');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        sections.forEach(section => {
+            section.style.opacity = 0;
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(section);
+        });
+        
+        // စာမျက်နှာရွေ့လျားသောအခါ header ပြောင်းလဲမှု
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            const scrollPosition = window.scrollY;
+            
+            if (scrollPosition > 50) {
+                header.style.background = 'linear-gradient(135deg, var(--primary-color), var(--secondary-color))';
+            } else {
+                header.style.background = 'linear-gradient(135
